@@ -12,7 +12,7 @@ app.get('/home', (req, res) => {
 });
 
 app.get('/test', req, res){
-    
+    res.send('Test text');
 }
 
 var port = 3000;
