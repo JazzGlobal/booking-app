@@ -1,12 +1,14 @@
 var express = require('express'),
     app = express();
 
+app.set('view engine', 'ejs');
+
 app.get('/', (req, res) => {
     res.redirect('/home');
 });
 
 app.get('/home', (req, res) => {
-
+    res.render('home')
 });
 
 var port = 3000;
