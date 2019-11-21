@@ -11,6 +11,10 @@ app.get('/home', (req, res) => {
     res.render('home')
 });
 
+app.get('/test', req, res){
+    
+}
+
 var port = 3000;
 app.listen(port, () => {
     console.log(`listening on port ${port}`)
