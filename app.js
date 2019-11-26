@@ -8,12 +8,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('/home', (req, res) => {
-    res.send('home text')
+    res.send('home text');
 });
 
-app.get('/test', req, res){
+app.get('/test', (req, res) => {
     res.send('Test text');
-}
+});
 
 var port = 3000;
 app.listen(port, () => {
