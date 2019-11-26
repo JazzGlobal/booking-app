@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/home', (req, res) => {
-    res.send('home text');
+    res.render('home')
 });
 
 app.get('/test', (req, res) => {
