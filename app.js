@@ -19,6 +19,23 @@ app.get('/home', (req, res) => {
 
 // == Production Routes End ==
 
+// == Authorization Routes Start ==
+
+app.get('/signup', (req, res) => {
+
+})
+
+app.get('/login', (req, res) => {
+
+})
+
+app.get('/logout', (req, res) => {
+
+})
+
+
+// == Authorization Routes End ==
+
 // == Test Route Start ==
 
 app.get('/test', (req, res) => {
