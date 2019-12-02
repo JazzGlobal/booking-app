@@ -7,9 +7,39 @@ var express = require('express'),
 
 
 // == App Configuration Start ==
+
+
+// Mongo Connection 
 // Enter Correct <password>
 mongoose.connect('mongodb+srv://admin:<password>@cluster0-cehwv.mongodb.net/booking_app?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
+
+
+// Passport Serialization Statements.
+passport.serializeUser((user,done)=>{
+    done(null,user);
+});
+
+passport.deserializeUser((obj,done)=>{
+    done(null,obj);
+});
+
+// Express Session Inititalization.
+app.use(require("express-session")({
+    secret: 'i am root',
+    resave: true,
+    saveUninitialized: true
+}));
+
+// Passport Configuration.
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+// Misc. Configuration
 app.set('view engine', 'ejs');
+app.use(express.static('public'));
 
 // == App Configuration End ==
 
