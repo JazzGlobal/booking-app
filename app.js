@@ -57,16 +57,24 @@ app.get('/home', (req, res) => {
 
 // == Authorization Routes Start ==
 
+// Checks if there is user logged in. If no, render signup form. If yes, redirect to home.
 app.get('/signup', (req, res) => {
-
+    if(req.user == null){
+        return requestAnimationFrame.render('signup')
+    } else { res.redirect('/') }
 })
 
+// Checks if there is user logged in. If no, render login form. If yes, redirect to home.
 app.get('/login', (req, res) => {
-
+    if(req.user == null){
+        return requestAnimationFrame.render('login')
+    } else { res.redirect('/') }
 })
 
+// Logs user out then redirects to home page.
 app.get('/logout', (req, res) => {
-
+    req.logout()
+    res.redirect('/')
 })
 
 
