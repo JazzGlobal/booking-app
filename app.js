@@ -64,11 +64,19 @@ app.get('/signup', (req, res) => {
     } else { res.redirect('/') }
 })
 
+app.post('/signup', (req, res) => {
+    // Create new account in database.
+})
+
 // Checks if there is user logged in. If no, render login form. If yes, redirect to home.
 app.get('/login', (req, res) => {
     if(req.user == null){
         return requestAnimationFrame.render('login')
     } else { res.redirect('/') }
+})
+
+app.post('/login', (req, res) => {
+    // Read form data and try to log in user from said data.
 })
 
 // Logs user out then redirects to home page.
