@@ -5,7 +5,7 @@ var express = require('express'),
 
 // == App Configuration Start ==
 // Enter Correct <password>
-mongoose.connect('mongodb+srv://admin:<password>@cluster0-cehwv.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb+srv://admin:<password>@cluster0-cehwv.mongodb.net/booking_app?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
 app.set('view engine', 'ejs');
 
 // == App Configuration End ==
