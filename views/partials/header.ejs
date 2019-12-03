@@ -8,5 +8,70 @@
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
     <title>Client Name: Booking</title>
+    <script>
+        $(document).ready(function() {
+         // Check for click events on the navbar burger icon
+          $(".navbar-burger").click(function() {
+          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+          $(".navbar-burger").toggleClass("is-active");
+          $(".navbar-menu").toggleClass("is-active");
+    });
+    });
+        </script>
 </head>
 <body>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                  <a class="navbar-item" href="https://bulma.io">
+                    <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+                  </a>
+              
+                  <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                  </a>
+                  <div class="navbar-menu" id="navMenu">
+
+                  </div>
+                </div>
+              
+                <div id="navbarBasicExample" class="navbar-menu">
+                  <div class="navbar-start">
+                    <a href="/home" class="navbar-item">
+                      Home
+                    </a>
+                    <a href="/profile" class="navbar-item">
+                      Profile
+                    </a>
+                    <%if(passedSessionUser) {%>
+                    <form id="searchForm" action="/user" method="GET">
+                        <div class="navbar-item">
+                            <input type="text" class="input" name="username" id="username" placeholder="Search by username">
+                        </div>
+                        <div class=navbar-item>
+                            <button class="button" type="submit">Search</button>
+                          </div>
+                      </form>
+                      <% } %>
+                  </div>
+              
+                  <div class="navbar-end">
+                    <% if(!passedSessionUser) {%>
+                    <div class="navbar-item">
+                      <a class="button is-primary" href="/signup">Signup</a>
+                    </div>
+                    <div class="navbar-item">
+                        <a class="button is-primary" href="/login">Login</a>
+                      </div>
+                      <% } else {%>
+                        <div class="navbar-item">
+                          <a class="button is-primary" href="/fweet">Fweet</a>
+                        </div>
+                        <div class="navbar-item">
+                          <a class="button is-primary" href="/logout">Logout</a>
+                        </div>
+                        <% } %>
+                  </div>
+                </div>
+              </nav>
