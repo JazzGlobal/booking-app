@@ -60,7 +60,7 @@ app.get('/home', (req, res) => {
 // Checks if there is user logged in. If no, render signup form. If yes, redirect to home.
 app.get('/signup', (req, res) => {
     if(req.user == null){
-        return requestAnimationFrame.render('signup')
+        return res.render('signup')
     } else { res.redirect('/') }
 })
 
@@ -71,7 +71,7 @@ app.post('/signup', (req, res) => {
 // Checks if there is user logged in. If no, render login form. If yes, redirect to home.
 app.get('/login', (req, res) => {
     if(req.user == null){
-        return requestAnimationFrame.render('login')
+        return res.render('login')
     } else { res.redirect('/') }
 })
 
