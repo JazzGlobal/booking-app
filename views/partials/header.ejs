@@ -41,7 +41,7 @@
                     <a href="/home" class="navbar-item">
                       Home
                     </a>
-                    <%if(passedSessionUser) {%>
+                    <%if(user) {%>
                     <form id="searchForm" action="/user" method="GET">
                         <div class="navbar-item">
                             <input type="text" class="input" name="username" id="username" placeholder="Search by username">
@@ -54,7 +54,7 @@
                   </div>
               
                   <div class="navbar-end">
-                    <% if(!passedSessionUser) {%>
+                    <% if(!user) {%>
                     <div class="navbar-item">
                       <a class="button is-primary" href="/signup">Signup</a>
                     </div>

@@ -1,6 +1,7 @@
 var express = require('express'),
     mongoose = require('mongoose'),
     passport = require('passport'),
+    bodyParser = require('body-parser'),
     LocalStrategy = require('passport-local'),
     User = require('./models/user'),
     app = express();
@@ -11,7 +12,7 @@ var express = require('express'),
 
 // Mongo Connection 
 // Enter Correct <password>
-mongoose.connect('mongodb+srv://admin:<password>@cluster0-cehwv.mongodb.net/booking_app?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb+srv://admin:admin@cluster0-yiufi.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
 
 
 // Passport Serialization Statements.
@@ -38,6 +39,8 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 // Misc. Configuration
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
@@ -60,24 +63,37 @@ app.get('/home', (req, res) => {
 // Checks if there is user logged in. If no, render signup form. If yes, redirect to home.
 app.get('/signup', (req, res) => {
     if(req.user == null){
-        return res.render('signup')
+        return res.render('signup', {user: req.user});
     } else { res.redirect('/') }
 })
 
 app.post('/signup', (req, res) => {
-    // Create new account in database.
-})
+    var newUser = new User(
+        {
+            username: req.body.username, 
+            email: req.body.email,
+        });
+    User.register(newUser, req.body.password ,(err, user) => {
+        if(err){
+            console.log(err);
+            return res.render('signup', {user: req.user});
+        }
+        passport.authenticate('local')(req, res, ()=> {
+            res.redirect('/');
+        });
+    });
+});
 
 // Checks if there is user logged in. If no, render login form. If yes, redirect to home.
 app.get('/login', (req, res) => {
     if(req.user == null){
-        return res.render('login')
+        return res.render('login', {user: req.user})
     } else { res.redirect('/') }
 })
 
-app.post('/login', (req, res) => {
-    // Read form data and try to log in user from said data.
-})
+app.post('/login', passport.authenticate('local',{successRedirect: "/", failureRedirect: "/failed"}),
+  function(req, res, next){
+});
 
 // Logs user out then redirects to home page.
 app.get('/logout', (req, res) => {

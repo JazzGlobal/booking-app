@@ -1,0 +1,85 @@
+<%- include('./partials/header', {user: user}); %>
+<div class="container">
+    <div class="columns">
+  
+      <div class="column"></div>
+      <div class="column">
+  
+        <form action="/signup" method="POST">
+          <div class="columns">
+            <div class="column">
+              <h2 class="title is-3 has-text-centered">Sign Up</h2>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column">
+    
+            </div>
+            <div class="column">
+              <div class="field">
+                  <label class="active" for="user_name">Email</label>
+                <div class="control">
+                    <input id="email" class="input" name="email" type="email">
+                </div>
+              </div>
+  
+            </div>
+            <div class="column">
+    
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column">
+    
+            </div>
+            <div class="column">
+              <div class="field">
+                  <label class="active" for="user_name">Username</label>
+                <div class="control">
+                    <input id="user_name" class="input" name="username" type="text">
+                </div>
+              </div>
+  
+            </div>
+            <div class="column">
+    
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column">
+    
+            </div>
+            <div class="column">
+              <div class="field">
+                  <label class="active" for="password">Password</label>
+                  <div class="control">
+                      <input id="password" class="input" name="password" type="password">
+                  </div>
+              </div>
+            </div>
+            <div class="column">
+    
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column">
+    
+            </div>
+            <div class="">
+              <button class="button is-primary" type="submit" name="signup">Register</button>
+              <a id="register" href="/login">Already have an account? Login!</a>
+            </div>
+            <div class="column">
+    
+            </div>
+          </div>
+        </form>
+  
+      </div>
+      <div class="column"></div>
+  
+  
+    </div>
+  
+  </div>
+<%- include('./partials/footer'); %>
