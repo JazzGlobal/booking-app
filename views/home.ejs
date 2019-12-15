@@ -1,5 +1,47 @@
 <%- include('./partials/header', {user: user}); %>
-
-<h1>This is the home page</h1>
-
+<div class="container">
+    <div class="columns">
+        <div class="column">
+        </div>
+        <div class="column">
+            <form action="/make_appointment" method="POST">
+                <div class="field">
+                    <label class="label has-text-centered">Make Appointment</label>
+                  </div>
+                <div class="field">
+                    <label class="label">Date</label>
+                    <div class="control">
+                      <input class="input" type="date" placeholder="Text input">
+                    </div>
+                    <p class="help">Select a date for your appointment!</p>
+                  </div>
+                <div class="field">
+                    <label class="label">Service</label>
+                    <div class="select">
+                        <select>
+                          <option>Service Option 1</option>
+                          <option>Service Option 2</option>
+                          <option>Service Option 3</option>
+                          <option>Service Option 4</option>
+                          <option>Service Option 5</option>
+                        </select>
+                      </div>
+                    <p class="help">Additional information regarding your appointment</p>
+                  </div>
+                  <div class="field">
+                    <label class="label">Description</label>
+                    <div class="control">
+                      <textarea class="input" type="textarea" name="description" placeholder="Text input"></textarea>
+                    </div>
+                    <p class="help">Additional information regarding your appointment</p>
+                  </div>
+                <div class="field">
+                    <button class="button is-primary" type="submit" name="submit">Schedule</button>
+                  </div>
+              </form>
+        </div>
+        <div class="column">
+        </div>
+      </div>
+</div>
 <%- include('./partials/footer')%>
