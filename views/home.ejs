@@ -1,6 +1,5 @@
-<%passedSessionUser = user%>
-<% include ./partials/header %>
+<%- include('./partials/header', {user: user}); %>
 
 <h1>This is the home page</h1>
 
-<% include ./partials/footer %>
+<%- include('./partials/footer')%>

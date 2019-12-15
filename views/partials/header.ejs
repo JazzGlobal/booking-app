@@ -41,16 +41,6 @@
                     <a href="/home" class="navbar-item">
                       Home
                     </a>
-                    <%if(user) {%>
-                    <form id="searchForm" action="/user" method="GET">
-                        <div class="navbar-item">
-                            <input type="text" class="input" name="username" id="username" placeholder="Search by username">
-                        </div>
-                        <div class=navbar-item>
-                            <button class="button" type="submit">Search</button>
-                          </div>
-                      </form>
-                      <% } %>
                   </div>
               
                   <div class="navbar-end">
@@ -62,9 +52,6 @@
                         <a class="button is-primary" href="/login">Login</a>
                       </div>
                       <% } else {%>
-                        <div class="navbar-item">
-                          <a class="button is-primary" href="/fweet">Fweet</a>
-                        </div>
                         <div class="navbar-item">
                           <a class="button is-primary" href="/logout">Logout</a>
                         </div>
