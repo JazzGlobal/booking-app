@@ -73,6 +73,11 @@ app.get('/home', (req, res) => {
 
 });
 
+app.post('/make_appointment', (req, res) => {
+    // TODO: Implement interaction between the scheduling form and the scheduling backend. 
+    // Should adhere to the admin's schedule. 
+})
+
 // == Production Routes End ==
 
 // == Authorization Routes Start ==
