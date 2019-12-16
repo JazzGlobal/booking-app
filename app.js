@@ -94,10 +94,6 @@ app.get('/home', (req, res) => {
 });
 
 app.post('/make_appointment', (req, res) => {
-    // TODO: Implement interaction between the scheduling form and the scheduling backend. 
-    // Should adhere to the admin's schedule. 
-
-    // TODO: Test email feature below.
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -110,7 +106,7 @@ app.post('/make_appointment', (req, res) => {
         from: 'Booking Service App',
         to: req.user.email,
         subject: 'Your Appointment',
-        text: `Woah this is really just a placeholder reminding you of your appointment on ${req.body.date} at ${req.body.time}`
+        text: `This is a message reminding you of your appointment on ${req.body.date} at ${req.body.time}`
     }
 
     transporter.sendMail(mailOptions, function(error, info) {
