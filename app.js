@@ -5,6 +5,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     LocalStrategy = require('passport-local'),
     User = require('./models/user'),
+    Availability = require('./models/availability'),
     app = express();
 
 
@@ -76,7 +77,16 @@ app.get('/home', (req, res) => {
         monthFromToday = yyyy+'-'+newMM+'-'+dd;
         console.log(today)
         console.log(monthFromToday)
-        res.render('home', {user: req.user, today: today, monthFromToday: monthFromToday})
+
+        Availability.findOne({}, (err, found) => {
+            if(err) {
+                console.log(err)
+            } else {
+                var open = found['open']
+                var close = found['close']
+                res.render('home', {user: req.user, today: today, monthFromToday: monthFromToday, open: open, close: close})                
+            }
+        })
     } else {
         res.redirect('login')
     }
@@ -98,7 +108,7 @@ app.post('/make_appointment', (req, res) => {
 
     var mailOptions = {
         from: 'Booking Service App',
-        to: 'client.booking.app@gmail.com',
+        to: req.user.email,
         subject: 'Your Appointment',
         text: `Woah this is really just a placeholder reminding you of your appointment on ${req.body.date} at ${req.body.time}`
     }
@@ -120,13 +130,23 @@ app.get('/admin', (req, res) => {
         res.redirect('/')
     } else {
         if(req.user.admin){
-            res.render('admin')
+            res.render('admin', {user: req.user})
         } else {
             res.redirect('/')
         }
     }
 }) 
 
+app.post('/set_time', (req, res) => {
+    Availability.findOneAndUpdate({}, {open: req.body.open, close: req.body.close}, (err, found) => {
+        if(err) {
+            console.log(err)
+        } else {
+            console.log(`Updated availability with ${req.body.open} and ${req.body.close}`)
+            res.redirect('/admin')
+        }
+    })
+})
 // == Production Routes End ==
 
 // == Authorization Routes Start ==
