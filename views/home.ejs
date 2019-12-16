@@ -11,21 +11,21 @@
                 <div class="field">
                     <label class="label">Date</label>
                     <div class="control">
-                      <input class="input" type="date" placeholder="Text input" min="<%=today%>" max="<%=monthFromToday%>">
+                      <input class="input" name="date" type="date" placeholder="Text input" min="<%=today%>" max="<%=monthFromToday%>">
                     </div>
                     <p class="help">Select a date for your appointment!</p>
                   </div>
                 <div class="field">
                     <label class="label">Time</label>
                     <div class="control">
-                      <input class="input" type="time" placeholder="Text input" min="08:00" max="16:00">
+                      <input class="input" name="time" type="time" placeholder="Text input" min="08:00" max="16:00">
                     </div>
                     <p class="help">Select a time for your appointment! Available schedule hours are 8am - 4pm</p>
                   </div>
                 <div class="field">
                     <label class="label">Service</label>
                     <div class="select">
-                        <select>
+                        <select name="service">
                           <option>Service Option 1</option>
                           <option>Service Option 2</option>
                           <option>Service Option 3</option>

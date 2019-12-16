@@ -1,4 +1,5 @@
 var express = require('express'),
+    nodemailer = require('nodemailer'),
     mongoose = require('mongoose'),
     passport = require('passport'),
     bodyParser = require('body-parser'),
@@ -85,6 +86,32 @@ app.get('/home', (req, res) => {
 app.post('/make_appointment', (req, res) => {
     // TODO: Implement interaction between the scheduling form and the scheduling backend. 
     // Should adhere to the admin's schedule. 
+
+    // TODO: Test email feature below.
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'client.booking.app@gmail.com',
+            pass: 'admin123!'
+        }
+    });
+
+    var mailOptions = {
+        from: 'Booking Service App',
+        to: 'client.booking.app@gmail.com',
+        subject: 'Your Appointment',
+        text: `Woah this is really just a placeholder reminding you of your appointment on ${req.body.date} at ${req.body.time}`
+    }
+
+    transporter.sendMail(mailOptions, function(error, info) {
+        if(error) {
+            console.log(error)
+        } else {
+            console.log('Email sent: ' + info.response)
+            res.redirect('/')
+        }
+    })
+    
 })
 
 app.get('/admin', (req, res) => {
