@@ -49,6 +49,11 @@
                         <a class="button is-primary" href="/login">Login</a>
                       </div>
                       <% } else {%>
+                        <% if (user.admin) {%>
+                          <div class="navbar-item">
+                            <a class="button is-primary" href="/admin">Admin Panel</a>
+                          </div>
+                          <% } %>
                         <div class="navbar-item">
                           <a class="button is-primary" href="/logout">Logout</a>
                         </div>
