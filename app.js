@@ -78,6 +78,19 @@ app.post('/make_appointment', (req, res) => {
     // Should adhere to the admin's schedule. 
 })
 
+app.get('/admin', (req, res) => {
+    // render admin login page
+    if(req.user == null) {
+        res.redirect('/')
+    } else {
+        if(req.user.admin){
+            res.render('admin')
+        } else {
+            res.redirect('/')
+        }
+    }
+}) 
+
 // == Production Routes End ==
 
 // == Authorization Routes Start ==
