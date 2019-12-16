@@ -57,6 +57,7 @@ app.get('/home', (req, res) => {
         var today = new Date();
         var dd = today.getDate();
         var mm = today.getMonth()+1; //January is 0!
+        var newMM = today.getMonth()+2
         var yyyy = today.getFullYear();
         if(dd<10){
             dd='0'+dd
@@ -65,8 +66,16 @@ app.get('/home', (req, res) => {
             mm='0'+mm
         } 
         today = yyyy+'-'+mm+'-'+dd;
+
+        var monthFromToday = new Date()
+        if(newMM > 12){
+            newMM = '01'
+            yyyy = monthFromToday.getFullYear()+1
+        }
+        monthFromToday = yyyy+'-'+newMM+'-'+dd;
         console.log(today)
-        res.render('home', {user: req.user, today: today})
+        console.log(monthFromToday)
+        res.render('home', {user: req.user, today: today, monthFromToday: monthFromToday})
     } else {
         res.redirect('login')
     }
