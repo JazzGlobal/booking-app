@@ -120,6 +120,9 @@ app.post('/make_appointment', (req, res) => {
     
 })
 
+app.get('/failed', (req, res) => {
+    res.render('failed', {user: req.user})
+})
 app.get('/admin', (req, res) => {
     // render admin login page
     if(req.user == null) {
